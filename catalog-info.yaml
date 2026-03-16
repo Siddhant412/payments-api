@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "payments-api"
+  description: "API for payment operations"
+  annotations:
+    github.com/project-slug: Siddhant412/payments-api
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: "payments-api"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "group:default/payments-team"
+  system: "system:default/gitops-developer-platform"
