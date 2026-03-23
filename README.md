@@ -1,6 +1,6 @@
 # payments-api
 
-API for payment operations
+API for the payment operations
 
 ## Local Development
 
