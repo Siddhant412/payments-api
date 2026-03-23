@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: payments-api
-          image: ghcr.io/Siddhant412/payments-api:latest
+          image: ghcr.io/siddhant412/payments-api:latest
           ports:
             - name: http
               containerPort: 7000
