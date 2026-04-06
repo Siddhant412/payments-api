@@ -27,3 +27,12 @@ npm test
 - `test/` contains smoke tests for the HTTP endpoints
 - `docs/` contains TechDocs content
 - `kustomize/` contains deploy manifests for `dev` and `staging`
+
+## Deployment Flow
+
+This repository owns application code and image builds. Deployment desired state lives in the separate `gitops-platform-environments` repository.
+
+On pushes to `main`, CI:
+
+- publishes a multi-arch image to GHCR
+- updates `apps/payments-api/overlays/dev/kustomization.yaml` in the GitOps repo with the new image tag

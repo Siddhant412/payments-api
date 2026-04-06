@@ -8,6 +8,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  GITOPS_REPO: Siddhant412/gitops-platform-environments
+  GITOPS_OVERLAY_PATH: apps/payments-api/overlays/dev/kustomization.yaml
 
 jobs:
   test-and-build:
@@ -59,3 +61,10 @@ jobs:
           tags: |
             ${{ steps.image.outputs.name }}:latest
             ${{ steps.image.outputs.name }}:${{ github.sha }}
+
+      - name: Update GitOps repo
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GITOPS_REPO_TOKEN: ${{ secrets.GITOPS_REPO_TOKEN }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: ./.github/scripts/update-gitops-repo.sh
